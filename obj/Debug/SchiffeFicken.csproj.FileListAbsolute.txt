@@ -5,3 +5,10 @@ C:\Users\Admin\Source\Repos\Games\testest\SchiffeFicken\obj\Debug\SchiffeFicken.
 C:\Users\Admin\Source\Repos\Games\testest\SchiffeFicken\obj\Debug\SchiffeFicken.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Source\Repos\Games\testest\SchiffeFicken\obj\Debug\SchiffeFicken.exe
 C:\Users\Admin\Source\Repos\Games\testest\SchiffeFicken\obj\Debug\SchiffeFicken.pdb
+D:\3. Programmieren\Source\SchiffeFicken\bin\Debug\SchiffeFicken.exe.config
+D:\3. Programmieren\Source\SchiffeFicken\bin\Debug\SchiffeFicken.exe
+D:\3. Programmieren\Source\SchiffeFicken\bin\Debug\SchiffeFicken.pdb
+D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.csprojResolveAssemblyReference.cache
+D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.csproj.CoreCompileInputs.cache
+D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.exe
+D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.pdb

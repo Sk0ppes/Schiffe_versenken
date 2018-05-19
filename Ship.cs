@@ -16,22 +16,35 @@ namespace SchiffeFicken
             Right
         }
 
-        private bool[] status;
+        public enum State
+        {
+            placing,
+            placed,
+            destroyed
+        }
+
+        public int xOff = 0, yOff = 0;
+        private State[] status;
         private int length;
         public Vector2 position;
         private Rotation rotation;
 
         public Ship(int length, Rotation rotation, Vector2 location)
         {
-            status = new bool[length];
+            this.status = new State[length];
             this.length = length;
             this.rotation = rotation;
             this.position = location;
+
+            for (int i = 0; i < status.Length; i++)
+                status[i] = State.placing;
         }
 
-        public void Draw()
+        public void Update()
         {
-            int xOff = 0, yOff = 0;
+            yOff = 0;
+            xOff = 0;
+
             switch (rotation)
             {
                 case Rotation.Down:
@@ -52,17 +65,42 @@ namespace SchiffeFicken
                 position.x = 1;
             if (position.y < 1)
                 position.y = 1;
-            if (position.x + xOff * 2 * (length-1) < 1)
-                position.x = 1 - xOff * 2 * (length-1);
+            if (position.x + xOff * 2 * (length - 1) < 1)
+                position.x = 1 - xOff * 2 * (length - 1);
             if (position.y + yOff * (length - 1) < 1)
                 position.y = 1 - yOff * (length - 1);
+            if (position.x > 19)
+                position.x = 19;
+            if (position.x + xOff * 2 * (length - 1) > 19)
+                position.x = 19 - xOff * 2 * (length - 1);
+            if (position.y > 10)
+                position.y = 10;
+            if (position.y + yOff * (length - 1) > 10)
+                position.y = 10 - yOff * (length - 1);
+        }
 
+        public void Draw()
+        {
             for (int i = 0; i < length; i++)
             {
                 Console.SetCursorPosition(position.x + xOff*i*2, position.y + yOff*i);
                 ConsoleColor oldColor = Console.ForegroundColor;
-                Console.ForegroundColor = status[i] ? ConsoleColor.Green : ConsoleColor.Red;
-                Console.Write("X");
+
+                switch(status[i])
+                {
+                    case State.destroyed:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("█");
+                        break;
+                    case State.placed:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("█");
+                        break;
+                    case State.placing:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write("█");
+                        break;
+                }
                 Console.ForegroundColor = oldColor;
             }
         }
@@ -105,6 +143,38 @@ namespace SchiffeFicken
                         break;
                 }
             }
+        }
+
+        public bool IsCrossing(Ship ship)
+        {
+            for(int indexSelf = 0; indexSelf < length; indexSelf++)
+            {
+                for(int indexTarget = 0; indexTarget < ship.length; indexTarget++)
+                {
+                    if (position.x + xOff * 2 * indexSelf == ship.position.x + ship.xOff * 2 * indexTarget && position.y + yOff * indexSelf == ship.position.y + ship.yOff * indexTarget)
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsHitting(Vector2 location)
+        {
+            for (int indexSelf = 0; indexSelf < length; indexSelf++)
+            {
+                if (position.x + xOff * 2 * indexSelf == location.x && position.y + yOff * indexSelf == location.y)
+                {
+                    status[indexSelf] = State.destroyed;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void Place()
+        {
+            for (int i = 0; i < status.Length; i++)
+                status[i] = State.placed;
         }
     }
 }

@@ -16,15 +16,34 @@ namespace SchiffeFicken
         // Feld
         // 10 x 10
         List<Ship> ships = new List<Ship>();
+        Ship[] ShipsToPlace = {
+            new Ship(2, Ship.Rotation.Down, new Vector2(1, 1)),
+            new Ship(2, Ship.Rotation.Down, new Vector2(1, 1)),
+            new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
+            new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
+            new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
+            new Ship(4, Ship.Rotation.Down, new Vector2(1, 1)),
+            new Ship(4, Ship.Rotation.Down, new Vector2(1, 1)),
+            new Ship(5, Ship.Rotation.Down, new Vector2(1, 1))
+        };
 
         public void Setup()
         {
-            PlaceShip(new Ship(5, Ship.Rotation.Down, new Vector2(0, 0)));
+            Draw();
+
+            foreach (Ship ship in ShipsToPlace)
+                PlaceShip(ship);
+
+            Attack(new Vector2(1, 1)); // TEST
         }
 
         public void PlaceShip(Ship ship)
         {
             bool placed = false;
+            Update();
+            Draw();
+
+
             do
             {
                 ships.Remove(ship);
@@ -32,6 +51,9 @@ namespace SchiffeFicken
                 {
                     case ConsoleKey.Enter:
                         placed = true;
+                        foreach (Ship s in ships)
+                            if (ship.IsCrossing(s))
+                                placed = false;
                         break;
                     case ConsoleKey.W:
                         ship.position.y -= 1;
@@ -53,9 +75,19 @@ namespace SchiffeFicken
                         break;
                 }
                 ships.Add(ship);
+                Update();
                 Draw();
             }
             while (!placed);
+            ship.Place();
+        }
+
+        public void Update()
+        {
+            foreach(Ship ship in ships)
+            {
+                ship.Update();
+            }
         }
 
         public void Draw()
@@ -68,13 +100,22 @@ namespace SchiffeFicken
             }
             for (int i = 0; i < 10; i++)
             {
-                Console.Write("\n" + "abcdefghij"[i] + "                   ");
+                Console.Write("\n" + "abcdefghij"[i] + String.Concat(Enumerable.Repeat(" ", 19)));
             }
 
             foreach (Ship ship in ships)
             {
                 ship.Draw();
             }
+        }
+
+        public void Attack(Vector2 location)
+        {
+            foreach(Ship ship in ships)
+            {
+                ship.IsHitting(location);
+            }
+            Draw();
         }
     }
 }
