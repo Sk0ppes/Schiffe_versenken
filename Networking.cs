@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace SchiffeFicken
 {
-    class Program
+    class Networking
     {
-        static void Main(string[] args)
+        public static void SendMessage(string msg)
         {
-            Console.CursorVisible = false;
-            Game.Setup();
-            Console.ReadKey();
+            // ....
+        }
+
+        public static bool GetBool()
+        {
+            return true;
         }
     }
 }

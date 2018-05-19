@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameInstance.cs" />
+    <Compile Include="Basefield.cs" />
+    <Compile Include="Bomb.cs" />
+    <Compile Include="Enemyfield.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Localfield.cs" />
+    <Compile Include="Networking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Selector.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="Vector2.cs" />
   </ItemGroup>
