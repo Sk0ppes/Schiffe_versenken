@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchiffeFicken
 {
@@ -10,6 +7,8 @@ namespace SchiffeFicken
     {
         public virtual void Draw()
         {
+            ShowHelp();
+
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(0, 0);
 
@@ -23,6 +22,55 @@ namespace SchiffeFicken
         public virtual void Update()
         {
 
+        }
+
+        private void ShowHelp()
+        {
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            int xLen = 30, yLen = 7;
+
+            for (int x = 0; x < xLen; x++)
+                for (int y = 0; y < yLen; y++)
+                {
+                    Console.SetCursorPosition(x + 21, y + 1);
+                    Console.Write(" ");
+                }
+
+            Console.SetCursorPosition(21, 1);
+            Console.Write("WASD\t- Move");
+
+            Console.SetCursorPosition(21, 2);
+            Console.Write("QE\t\t- Rotate");
+
+            Console.SetCursorPosition(21, 3);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("█");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\t\t- Moving Ship");
+
+            Console.SetCursorPosition(21, 4);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("█");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\t\t- Normal Ship");
+
+            Console.SetCursorPosition(21, 5);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("█");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\t\t- Destroyed Ship");
+
+            Console.SetCursorPosition(21, 6);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("X");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("\t\t- Bomb hitted");
+
+            Console.SetCursorPosition(21, 7);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("X\t\t- Bomb missed");
         }
 
     }

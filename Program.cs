@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchiffeFicken
 {
@@ -11,8 +7,9 @@ namespace SchiffeFicken
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-            Game.Setup();
-            Console.ReadKey();
+
+            Menu menu = new Menu();
+            menu.Show();
         }
     }
 }
