@@ -8,8 +8,8 @@ namespace SchiffeFicken
         {
             Console.CursorVisible = false;
 
-            Menu menu = new Menu();
-            menu.Show();
+            MainMenu menu = new MainMenu();
+            menu.Open();
         }
     }
 }

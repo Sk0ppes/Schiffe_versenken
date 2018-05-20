@@ -9,6 +9,9 @@ namespace SchiffeFicken
 {
     class Networking
     {
+        public static int Port;
+        public static IPAddress Address;
+
         public enum State
         {
             Host,
@@ -17,7 +20,7 @@ namespace SchiffeFicken
 
         public static bool connected = false;
 
-        public static void Setup(State state, IPAddress Hostname, int Port)
+        public static void Setup(State state)
         {
             // ......
         }
