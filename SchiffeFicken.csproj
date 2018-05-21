@@ -41,21 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Base\Basefield.cs" />
-    <Compile Include="Game\Base\Menu.cs" />
-    <Compile Include="Game\Objects\Bomb.cs" />
-    <Compile Include="Game\Objects\ConnectingMenu.cs" />
-    <Compile Include="Game\Objects\ConnectMenu.cs" />
-    <Compile Include="Game\Objects\Enemyfield.cs" />
+    <Compile Include="Game\GameField\Basefield.cs" />
+    <Compile Include="Game\Menu\Elements\Button.cs" />
+    <Compile Include="Game\Menu\Elements\Element.cs" />
+    <Compile Include="Game\Menu\Elements\Label.cs" />
+    <Compile Include="Game\Menu\Menu.cs" />
+    <Compile Include="Game\Menu\Elements\Textbox.cs" />
+    <Compile Include="Game\GameField\Bomb.cs" />
+    <Compile Include="Game\Menu\Menus\ConnectingMenu.cs" />
+    <Compile Include="Game\Menu\Menus\ConnectMenu.cs" />
+    <Compile Include="Game\GameField\Enemyfield.cs" />
     <Compile Include="Game\Game.cs" />
-    <Compile Include="Game\Objects\Localfield.cs" />
-    <Compile Include="Game\Objects\MainMenu.cs" />
+    <Compile Include="Game\GameField\Localfield.cs" />
+    <Compile Include="Game\Menu\Menus\MainMenu.cs" />
+    <Compile Include="Game\Menu\Test.cs" />
     <Compile Include="Game\Networking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Game\Objects\Selector.cs" />
-    <Compile Include="Game\Objects\Ship.cs" />
-    <Compile Include="Game\Base\Vector2.cs" />
+    <Compile Include="Game\GameField\Selector.cs" />
+    <Compile Include="Game\GameField\Ship.cs" />
+    <Compile Include="Game\Math\Vector2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

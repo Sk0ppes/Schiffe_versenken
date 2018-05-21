@@ -172,5 +172,16 @@ namespace SchiffeFicken
             for (int i = 0; i < status.Length; i++)
                 status[i] = State.placed;
         }
+
+        public bool IsAlive()
+        {
+            foreach(State b in status)
+            {
+                if (b == State.placed || b == State.placing)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }

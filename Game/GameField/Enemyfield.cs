@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SchiffeFicken
 {
@@ -13,6 +14,7 @@ namespace SchiffeFicken
         {
             bool ready = false;
             selector.Show();
+            Draw();
             do
             {
                 switch (Console.ReadKey(true).Key)
@@ -27,10 +29,10 @@ namespace SchiffeFicken
                         selector.position.y += 1;
                         break;
                     case ConsoleKey.A:
-                        selector.position.x -= 1;
+                        selector.position.x -= 2;
                         break;
                     case ConsoleKey.D:
-                        selector.position.x += 1;
+                        selector.position.x += 2;
                         break;
                 }
                 Update();
@@ -40,8 +42,9 @@ namespace SchiffeFicken
             selector.Hide();
 
             bombs.Add(new Bomb(new Vector2(selector.position.x, selector.position.y)));
-            Networking.SendMessage("game:attack(" + selector.position.x + "," + selector.position.y + ")");
             Draw();
+            Thread.Sleep(1000);
+            Networking.SendMessage("game:yourmove()");
         }
 
         public override void Update()

@@ -12,3 +12,10 @@ D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.csprojResolveAs
 D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.csproj.CoreCompileInputs.cache
 D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.exe
 D:\3. Programmieren\Source\SchiffeFicken\obj\Debug\SchiffeFicken.pdb
+D:\3. Programmieren\Source\SchiffeFicken_markus\bin\Debug\SchiffeFicken.exe.config
+D:\3. Programmieren\Source\SchiffeFicken_markus\bin\Debug\SchiffeFicken.exe
+D:\3. Programmieren\Source\SchiffeFicken_markus\bin\Debug\SchiffeFicken.pdb
+D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Debug\SchiffeFicken.csprojResolveAssemblyReference.cache
+D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Debug\SchiffeFicken.csproj.CoreCompileInputs.cache
+D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Debug\SchiffeFicken.exe
+D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Debug\SchiffeFicken.pdb

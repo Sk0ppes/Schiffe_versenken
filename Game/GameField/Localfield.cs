@@ -14,11 +14,6 @@ namespace SchiffeFicken
 
             foreach (Ship ship in ships)
                 ship.Update();
-
-            if (ships.Count == 0)
-            {
-                Game.EndGame("nomoreships");
-            }
         }
 
         public override void Draw()
@@ -76,16 +71,26 @@ namespace SchiffeFicken
         }
 
         // Gets called when other Player has attacked
-        public void Attack(Vector2 location)
+        public bool Attack(Vector2 location)
         {
             foreach (Ship ship in ships)
                 if (ship.IsHitting(location))
                 {
                     Draw();
-                    return;
+                    return true;
                 }
             bombs.Add(new Bomb(location, false));
             Draw();
+            return false;
+        }
+
+        public bool IsAlive()
+        {
+            foreach (Ship ship in ships)
+                if (ship.IsAlive())
+                    return true;
+
+            return false;
         }
     }
 }

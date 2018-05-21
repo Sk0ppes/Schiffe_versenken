@@ -9,7 +9,7 @@ namespace SchiffeFicken
             Console.CursorVisible = false;
 
             MainMenu menu = new MainMenu();
-            menu.Open();
+            menu.Open(true);
         }
     }
 }
