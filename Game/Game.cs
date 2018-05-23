@@ -11,24 +11,27 @@ namespace SchiffeFicken
         // 5 x 1
         // Feld
         // 10 x 10
-        private static Ship[] ShipsToPlace = {
-            new Ship(2, Ship.Rotation.Down, new Vector2(1, 1)),
-            new Ship(2, Ship.Rotation.Down, new Vector2(1, 1)),
-            new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
-            new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
-            new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
-            new Ship(4, Ship.Rotation.Down, new Vector2(1, 1)),
-            new Ship(4, Ship.Rotation.Down, new Vector2(1, 1)),
-            new Ship(5, Ship.Rotation.Down, new Vector2(1, 1))
-        };
+        private static Ship[] ShipsToPlace;
         
         private static bool InGame = false;
         private static Basefield activeField;
         private static Localfield localfield;
         private static Enemyfield enemyfield;
+        public static bool OP = false;
 
         public static void Setup()
         {
+            ShipsToPlace = new Ship[] {
+                new Ship(2, Ship.Rotation.Down, new Vector2(1, 1)),
+                new Ship(2, Ship.Rotation.Down, new Vector2(1, 1)),
+                new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
+                new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
+                new Ship(3, Ship.Rotation.Down, new Vector2(1, 1)),
+                new Ship(4, Ship.Rotation.Down, new Vector2(1, 1)),
+                new Ship(4, Ship.Rotation.Down, new Vector2(1, 1)),
+                new Ship(5, Ship.Rotation.Down, new Vector2(1, 1))
+            };
+
             localfield = new Localfield();
             enemyfield = new Enemyfield();
 
@@ -44,42 +47,71 @@ namespace SchiffeFicken
         
         public static void Start()
         {
-            while(Networking.GetMessage() != "game:ready");
+            while(Networking.GetMessage() != "game:ready")
+            {
+                if (Networking.error)
+                {
+                    ShowEndScreen("Lost Connection", false);
+                    return;
+                }
+            }
 
             InGame = true;
+            
+            if(Networking.HostMode == Networking.State.Client)
+            {
+                StartAttack();
+            }
 
-            while(InGame)
+            while (InGame)
             {
                 string cmd = Networking.GetMessage();
 
-                if (cmd.StartsWith("game.end("))
+                if (cmd.StartsWith("game:end("))
                 {
                     // example: game:end(nomoreships)
                     ShowEndScreen(cmd.Split('(')[1].Split(')')[0], true);
                 }
                 else if (cmd == "game:yourmove()")
                 {
-                    activeField = enemyfield;
-                    enemyfield.Move();
+                    if (!localfield.IsAlive())
+                        EndGame("No more Ships");
+                    else
+                        StartAttack();
                 }
                 else if (cmd.StartsWith("game:attack("))
                 {
                     // example: game:attack(1,2)
                     Vector2 pos = new Vector2(Convert.ToInt32(cmd.Split('(')[1].Split(',')[0]), Convert.ToInt32(cmd.Split(')')[0].Split(',')[1]));
-                    localfield.Attack(pos);
+                    Networking.SendBool(localfield.Attack(pos));
+                }
+
+
+                if (Networking.error)
+                {
+                    ShowEndScreen("Lost Connection", false);
+                    InGame = false;
                 }
             }
         }
 
+        private static void StartAttack()
+        {
+            activeField = enemyfield;
+            enemyfield.Move();
+            activeField = localfield;
+            activeField.Draw();
+        }
+
         public static void EndGame(string reason)
         {
-            InGame = false;
             Networking.SendMessage("game:end(" + reason + ")");
             ShowEndScreen(reason, false);
         }
 
         public static void ShowEndScreen(string reason, bool win)
         {
+            InGame = false;
             int xOff = 2, yOff = 2;
 
             Console.BackgroundColor = ConsoleColor.DarkGray;
@@ -94,6 +126,12 @@ namespace SchiffeFicken
             Console.Write(reason);
             Console.SetCursorPosition(1 + xOff, 2 + yOff);
             Console.Write(win ? "Winner" : "Loser");
+
+            Networking.Close();
+
+            Console.ReadKey(true);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
         }
     }
 }

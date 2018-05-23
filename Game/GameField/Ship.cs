@@ -61,18 +61,18 @@ namespace SchiffeFicken
                 position.x = 1;
             if (position.y < 1)
                 position.y = 1;
-            if (position.x + xOff * 2 * (length - 1) < 1)
-                position.x = 1 - xOff * 2 * (length - 1);
-            if (position.y + yOff * (length - 1) < 1)
-                position.y = 1 - yOff * (length - 1);
+            if ((position.x + ((xOff * 2) * (length - 1))) < 1)
+                position.x = 1 - ((xOff * 2) * (length - 1));
+            if ((position.y + (yOff * (length - 1))) < 1)
+                position.y = 1 - (yOff * (length - 1));
             if (position.x > 19)
                 position.x = 19;
-            if (position.x + xOff * 2 * (length - 1) > 19)
-                position.x = 19 - xOff * 2 * (length - 1);
+            if ((position.x + ((xOff * 2) * (length - 1))) > 19)
+                position.x = 19 - ((xOff * 2) * (length - 1));
             if (position.y > 10)
                 position.y = 10;
-            if (position.y + yOff * (length - 1) > 10)
-                position.y = 10 - yOff * (length - 1);
+            if ((position.y + (yOff * (length - 1))) > 10)
+                position.y = 10 - (yOff * (length - 1));
         }
 
         public void Draw()
@@ -171,6 +171,17 @@ namespace SchiffeFicken
         {
             for (int i = 0; i < status.Length; i++)
                 status[i] = State.placed;
+        }
+
+        public bool IsAlive()
+        {
+            foreach(State b in status)
+            {
+                if (b == State.placed || b == State.placing)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

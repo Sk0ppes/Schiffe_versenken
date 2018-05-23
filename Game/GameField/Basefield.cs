@@ -19,10 +19,7 @@ namespace SchiffeFicken
                 Console.Write("\n" + "abcdefghij"[i] + String.Concat(Enumerable.Repeat(" ", 19)));
         }
 
-        public virtual void Update()
-        {
-
-        }
+        public virtual void Update() { }
 
         private void ShowHelp()
         {
@@ -72,6 +69,5 @@ namespace SchiffeFicken
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("X\t\t- Bomb missed");
         }
-
     }
 }
