@@ -60,8 +60,8 @@ namespace SchiffeFicken
             {
                 for (int y = 1; y < 10; y++)
                 {
-                    Networking.SendMessage("game:attack(" + (x * 2 - 1) + "," + y + ")");
-                    bombs.Add(new Bomb(new Vector2(x*2 - 1, y)));
+                    Networking.SendMessage("game:attack(" + ((x * 2) - 1) + "," + y + ")");
+                    bombs.Add(new Bomb(new Vector2((x*2) - 1, y)));
                     Draw();
                     Thread.Sleep(50);
                 }

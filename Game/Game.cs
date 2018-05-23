@@ -99,8 +99,7 @@ namespace SchiffeFicken
                     Vector2 pos = new Vector2(Convert.ToInt32(cmd.Split('(')[1].Split(',')[0]), Convert.ToInt32(cmd.Split(')')[0].Split(',')[1]));
                     Networking.SendBool(localfield.Attack(pos));
                 }
-
-
+                
                 if (Networking.error)
                 {
                     ShowEndScreen("Lost Connection", false);
