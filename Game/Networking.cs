@@ -16,7 +16,7 @@ namespace SchiffeFicken
             Host,
             Client
         }
-
+        
         private static TcpListener server;
         private static TcpClient client;
         private static Thread thServer;
@@ -57,7 +57,10 @@ namespace SchiffeFicken
                 client = new TcpClient(Address.ToString(), Port);
                 connected = true;
             }
-            catch (Exception) { error = true; }
+            catch (Exception) {
+                error = true;
+            }
+            connected = false;
         }
 
         private static void Server()
@@ -71,7 +74,9 @@ namespace SchiffeFicken
                 client = server.AcceptTcpClient();
                 connected = true;
             }
-            catch(Exception) { error = true; }
+            catch(Exception) {
+                error = true;
+            }
 }
 
         public static void SendMessage(string msg)
@@ -83,7 +88,9 @@ namespace SchiffeFicken
             {
                 client.GetStream().Write(buffer, 0, buffer.Length);
             }
-            catch (Exception) { error = true; }
+            catch (Exception) {
+                error = true;
+            }
         }
 
         public static void SendInt(int value)
@@ -94,7 +101,9 @@ namespace SchiffeFicken
             {
                 client.GetStream().Write(buffer, 0, buffer.Length);
             }
-            catch (Exception) { error = true; }
+            catch (Exception) {
+                error = true;
+            }
         }
 
         public static string GetMessage()
@@ -107,7 +116,10 @@ namespace SchiffeFicken
                 client.GetStream().Read(buffer, 0, buffer.Length);
                 return UnicodeEncoding.Unicode.GetString(buffer);
             }
-            catch (Exception) { error = true; return ""; }
+            catch (Exception) {
+                error = true;
+                return "";
+            }
         }
 
         public static int GetInt()
@@ -117,7 +129,10 @@ namespace SchiffeFicken
             {
                 client.GetStream().Read(buffer, 0, buffer.Length);
                 return BitConverter.ToInt32(buffer, 0);
-            } catch (Exception) { error = true; return 0; }
+            } catch (Exception) {
+                error = true;
+                return 0;
+            }
         }
 
         public static void SendBool(bool value)
@@ -127,7 +142,9 @@ namespace SchiffeFicken
             {
                 client.GetStream().Write(buffer, 0, buffer.Length);
             }
-            catch (Exception) { error = true; }
+            catch (Exception) {
+                error = true;
+            }
         }
 
         public static bool GetBool()
@@ -138,7 +155,10 @@ namespace SchiffeFicken
                 client.GetStream().Read(buffer, 0, 1);
                 return BitConverter.ToBoolean(buffer, 0);
             }
-            catch (Exception) { error = true; return false; }
+            catch (Exception) {
+                error = true;
+                return false;
+            }
         }
     }
 }

@@ -79,7 +79,7 @@ namespace SchiffeFicken
         {
             for (int i = 0; i < length; i++)
             {
-                Console.SetCursorPosition(position.x + xOff*i*2, position.y + yOff*i);
+                Console.SetCursorPosition(position.x + (xOff*(i*2)), position.y + (yOff*i));
                 ConsoleColor oldColor = Console.ForegroundColor;
 
                 switch(status[i])
@@ -147,7 +147,7 @@ namespace SchiffeFicken
             {
                 for(int indexTarget = 0; indexTarget < ship.length; indexTarget++)
                 {
-                    if (position.x + xOff * 2 * indexSelf == ship.position.x + ship.xOff * 2 * indexTarget && position.y + yOff * indexSelf == ship.position.y + ship.yOff * indexTarget)
+                    if (position.x + ((xOff * 2) * indexSelf) == ship.position.x + ((ship.xOff * 2) * indexTarget) && position.y + (yOff * indexSelf) == ship.position.y + (ship.yOff * indexTarget))
                         return true;
                 }
             }
@@ -158,7 +158,7 @@ namespace SchiffeFicken
         {
             for (int indexSelf = 0; indexSelf < length; indexSelf++)
             {
-                if (position.x + xOff * 2 * indexSelf == location.x && position.y + yOff * indexSelf == location.y)
+                if (position.x + ((xOff * 2) * indexSelf) == location.x && position.y + (yOff * indexSelf) == location.y)
                 {
                     status[indexSelf] = State.destroyed;
                     return true;

@@ -53,7 +53,7 @@ namespace SchiffeFicken
             while (!ready);
             Networking.SendMessage("game:yourmove()");
         }
-
+        
         private void OP()
         {
             for (int x = 1; x < 10; x++)
@@ -66,6 +66,10 @@ namespace SchiffeFicken
                     Thread.Sleep(50);
                 }
             }
+            bombs.Add(new Bomb(new Vector2(selector.position.x, selector.position.y)));
+            Draw();
+            Thread.Sleep(1000);
+            Networking.SendMessage("game:yourmove()");
         }
 
         public override void Update()

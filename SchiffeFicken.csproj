@@ -54,6 +54,7 @@
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameField\Localfield.cs" />
     <Compile Include="Game\Menu\Menus\MainMenu.cs" />
+    <Compile Include="Game\Menu\Test.cs" />
     <Compile Include="Game\Networking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -63,6 +63,14 @@ namespace SchiffeFicken
                 StartAttack();
             }
 
+            if(Networking.HostMode == Networking.State.Client)
+            {
+                activeField = enemyfield;
+                enemyfield.Move();
+                activeField = localfield;
+                activeField.Draw();
+            }
+
             while (InGame)
             {
                 string cmd = Networking.GetMessage();
@@ -78,6 +86,12 @@ namespace SchiffeFicken
                         EndGame("No more Ships");
                     else
                         StartAttack();
+                    {
+                        activeField = enemyfield;
+                        enemyfield.Move();
+                        activeField = localfield;
+                        activeField.Draw();
+                    }
                 }
                 else if (cmd.StartsWith("game:attack("))
                 {
