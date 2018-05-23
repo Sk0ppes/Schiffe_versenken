@@ -11,7 +11,11 @@ namespace SchiffeFicken
         private Action action;
         private string title;
 
-        public Button(Vector2 location, Action action, string title) : base(location) { this.action = action; this.title = title; }
+        public Button(Vector2 location, Action action, string title) : base(location)
+        {
+            this.action = action;
+            this.title = title;
+        }
 
         public override void Draw(bool hovered)
         {
@@ -24,10 +28,7 @@ namespace SchiffeFicken
             Console.Write(title);
         }
 
-        public override void Update()
-        {
-
-        }
+        public override void Update() { }
 
         public override void OnEnter()
         {

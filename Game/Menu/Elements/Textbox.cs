@@ -12,7 +12,10 @@ namespace SchiffeFicken
         private string Title = "";
         private bool Active = false;
 
-        public Textbox(Vector2 location, string title) : base(location) { this.Title = title; }
+        public Textbox(Vector2 location, string title) : base(location)
+        {
+            this.Title = title;
+        }
 
         public override void Draw(bool hovered)
         {

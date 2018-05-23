@@ -10,7 +10,10 @@ namespace SchiffeFicken
     {
         private string title;
 
-        public Label(Vector2 location, string title) : base(location) { this.title = title; }
+        public Label(Vector2 location, string title) : base(location)
+        {
+            this.title = title;
+        }
 
         public override void Draw(bool hovered)
         {
