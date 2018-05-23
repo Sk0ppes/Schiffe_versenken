@@ -26,7 +26,9 @@ namespace SchiffeFicken
                 Networking.Port = Convert.ToInt32(((Textbox)elements[1]).GetText());
                 Close();
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
     }
 }
