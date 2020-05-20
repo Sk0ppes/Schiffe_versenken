@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Threading;
-using System.Net;
+using System.Numerics;
+using Battleships.UI.Elements;
+using Battleships.Net;
 
-namespace SchiffeFicken
+namespace Battleships.UI.Menus
 {
     class MainMenu : Menu
     {

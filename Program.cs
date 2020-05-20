@@ -1,6 +1,7 @@
 ﻿using System;
+using Battleships.UI.Menus;
 
-namespace SchiffeFicken
+namespace Battleships
 {
     class Program
     {

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
 
-namespace SchiffeFicken
+namespace Battleships.UI.Elements
 {
     class Textbox : Element
     {
@@ -28,9 +26,9 @@ namespace SchiffeFicken
             else
                 Console.ForegroundColor = ConsoleColor.Gray;
 
-            Console.SetCursorPosition(location.x, location.y);
+            Console.SetCursorPosition((int)location.X, (int)location.Y);
             Console.Write(String.Concat(Enumerable.Repeat(" ", 18 + Title.Length)));
-            Console.SetCursorPosition(location.x, location.y);
+            Console.SetCursorPosition((int)location.X, (int)location.Y);
             Console.Write(Title + ": " + Value);
             Console.BackgroundColor = oldColor;
         }

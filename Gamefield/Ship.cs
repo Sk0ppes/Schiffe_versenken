@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Numerics;
 
-namespace SchiffeFicken
+namespace Battleships.Gamefield
 {
     class Ship
     {
@@ -57,29 +58,29 @@ namespace SchiffeFicken
                     break;
             }
 
-            if (position.x < 1)
-                position.x = 1;
-            if (position.y < 1)
-                position.y = 1;
-            if ((position.x + ((xOff * 2) * (length - 1))) < 1)
-                position.x = 1 - ((xOff * 2) * (length - 1));
-            if ((position.y + (yOff * (length - 1))) < 1)
-                position.y = 1 - (yOff * (length - 1));
-            if (position.x > 19)
-                position.x = 19;
-            if ((position.x + ((xOff * 2) * (length - 1))) > 19)
-                position.x = 19 - ((xOff * 2) * (length - 1));
-            if (position.y > 10)
-                position.y = 10;
-            if ((position.y + (yOff * (length - 1))) > 10)
-                position.y = 10 - (yOff * (length - 1));
+            if (position.X < 1)
+                position.X = 1;
+            if (position.Y < 1)
+                position.Y = 1;
+            if ((position.X + ((xOff * 2) * (length - 1))) < 1)
+                position.X = 1 - ((xOff * 2) * (length - 1));
+            if ((position.Y + (yOff * (length - 1))) < 1)
+                position.Y = 1 - (yOff * (length - 1));
+            if (position.X > 19)
+                position.X = 19;
+            if ((position.X + ((xOff * 2) * (length - 1))) > 19)
+                position.X = 19 - ((xOff * 2) * (length - 1));
+            if (position.Y > 10)
+                position.Y = 10;
+            if ((position.Y + (yOff * (length - 1))) > 10)
+                position.Y = 10 - (yOff * (length - 1));
         }
 
         public void Draw()
         {
             for (int i = 0; i < length; i++)
             {
-                Console.SetCursorPosition(position.x + (xOff*(i*2)), position.y + (yOff*i));
+                Console.SetCursorPosition((int)position.X + (xOff*(i*2)), (int)position.Y + (yOff*i));
                 ConsoleColor oldColor = Console.ForegroundColor;
 
                 switch(status[i])
@@ -147,7 +148,7 @@ namespace SchiffeFicken
             {
                 for(int indexTarget = 0; indexTarget < ship.length; indexTarget++)
                 {
-                    if (position.x + ((xOff * 2) * indexSelf) == ship.position.x + ((ship.xOff * 2) * indexTarget) && position.y + (yOff * indexSelf) == ship.position.y + (ship.yOff * indexTarget))
+                    if (position.X + ((xOff * 2) * indexSelf) == ship.position.X + ((ship.xOff * 2) * indexTarget) && position.Y + (yOff * indexSelf) == ship.position.Y + (ship.yOff * indexTarget))
                         return true;
                 }
             }
@@ -158,7 +159,7 @@ namespace SchiffeFicken
         {
             for (int indexSelf = 0; indexSelf < length; indexSelf++)
             {
-                if (position.x + ((xOff * 2) * indexSelf) == location.x && position.y + (yOff * indexSelf) == location.y)
+                if (position.X + ((xOff * 2) * indexSelf) == location.X && position.Y + (yOff * indexSelf) == location.Y)
                 {
                     status[indexSelf] = State.destroyed;
                     return true;

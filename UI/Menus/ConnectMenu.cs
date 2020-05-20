@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
+using System.Numerics;
+using Battleships.Net;
+using Battleships.UI.Elements;
 
-namespace SchiffeFicken
+namespace Battleships.UI.Menus
 {
     class ConnectMenu : Menu
     {

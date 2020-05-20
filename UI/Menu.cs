@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Numerics;
+using Battleships.UI.Elements;
 
-namespace SchiffeFicken
+namespace Battleships.UI
 {
     abstract class Menu
     {
@@ -56,10 +55,10 @@ namespace SchiffeFicken
         {
             ConsoleColor oldColor = Console.BackgroundColor;
             Console.BackgroundColor = ConsoleColor.DarkGray;
-            for (int y = 0; y < size.y; y++)
+            for (int y = 0; y < size.Y; y++)
             {
                 Console.SetCursorPosition(0, y);
-                Console.Write(new string(' ', size.x));
+                Console.Write(new string(' ', (int)size.X));
             }
 
             for (int i = 0; i < elements.Count; i++)

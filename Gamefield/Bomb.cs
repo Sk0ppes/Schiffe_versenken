@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Numerics;
+using Battleships.Net;
 
-namespace SchiffeFicken
+namespace Battleships.Gamefield
 {
     class Bomb
     {
@@ -22,7 +24,7 @@ namespace SchiffeFicken
         public void Draw()
         {
             ConsoleColor oldColor = Console.ForegroundColor;
-            Console.SetCursorPosition(position.x, position.y);
+            Console.SetCursorPosition((int)position.X, (int)position.Y);
             Console.ForegroundColor = IsHit ? ConsoleColor.Red : ConsoleColor.White;
             Console.Write("X");
             Console.ForegroundColor = oldColor;
@@ -30,7 +32,7 @@ namespace SchiffeFicken
 
         public void Hit()
         {
-            Networking.SendMessage("game:attack(" + position.x + "," + position.y + ")");
+            Networking.SendMessage("game:attack(" + position.X + "," + position.Y + ")");
             IsHit = Networking.GetBool();
         }
     }

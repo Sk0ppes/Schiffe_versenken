@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Numerics;
 
-namespace SchiffeFicken
+namespace Battleships.Gamefield
 {
     class Selector
     {
@@ -16,21 +17,21 @@ namespace SchiffeFicken
         {
             if (!Visible)
                 return;
-            if (position.x < 1)
-                position.x = 1;
-            if (position.y < 1)
-                position.y = 1;
-            if (position.x > 19)
-                position.x = 19;
-            if (position.y > 10)
-                position.y = 10;
+            if (position.X < 1)
+                position.X = 1;
+            if (position.Y < 1)
+                position.Y = 1;
+            if (position.X > 19)
+                position.X = 19;
+            if (position.Y > 10)
+                position.Y = 10;
         }
 
         public void Draw()
         {
             if (!Visible)
                 return;
-            Console.SetCursorPosition(position.x, position.y);
+            Console.SetCursorPosition((int)position.X, (int)position.Y);
             ConsoleColor oldColor = Console.ForegroundColor;
 
             Console.ForegroundColor = ConsoleColor.Green;

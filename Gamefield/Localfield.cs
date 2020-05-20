@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
-namespace SchiffeFicken
+namespace Battleships.Gamefield
 {
     class Localfield : Basefield
     {
@@ -44,16 +45,16 @@ namespace SchiffeFicken
                                 placed = false;
                         break;
                     case ConsoleKey.W:
-                        ship.position.y -= 1;
+                        ship.position.Y -= 1;
                         break;
                     case ConsoleKey.S:
-                        ship.position.y += 1;
+                        ship.position.Y += 1;
                         break;
                     case ConsoleKey.A:
-                        ship.position.x -= 2;
+                        ship.position.X -= 2;
                         break;
                     case ConsoleKey.D:
-                        ship.position.x += 2;
+                        ship.position.X += 2;
                         break;
                     case ConsoleKey.E:
                         ship.Rotate(Ship.Rotation.Right);

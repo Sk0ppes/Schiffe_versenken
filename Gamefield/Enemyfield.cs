@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Numerics;
+using Battleships.Net;
 
-namespace SchiffeFicken
+namespace Battleships.Gamefield
 {
     class Enemyfield : Basefield
     {
@@ -22,21 +24,21 @@ namespace SchiffeFicken
                     case ConsoleKey.Enter:
                         ready = true;
                         selector.Hide();
-                        bombs.Add(new Bomb(new Vector2(selector.position.x, selector.position.y)));
+                        bombs.Add(new Bomb(new Vector2(selector.position.X, selector.position.Y)));
                         Draw();
                         Thread.Sleep(1000);
                         break;
                     case ConsoleKey.W:
-                        selector.position.y -= 1;
+                        selector.position.Y -= 1;
                         break;
                     case ConsoleKey.S:
-                        selector.position.y += 1;
+                        selector.position.Y += 1;
                         break;
                     case ConsoleKey.A:
-                        selector.position.x -= 2;
+                        selector.position.X -= 2;
                         break;
                     case ConsoleKey.D:
-                        selector.position.x += 2;
+                        selector.position.X += 2;
                         break;
                     case ConsoleKey.Delete:
                         if(Game.OP)
@@ -66,7 +68,7 @@ namespace SchiffeFicken
                     Thread.Sleep(50);
                 }
             }
-            bombs.Add(new Bomb(new Vector2(selector.position.x, selector.position.y)));
+            bombs.Add(new Bomb(new Vector2((int)selector.position.X, (int)selector.position.Y)));
             Draw();
             Thread.Sleep(1000);
             Networking.SendMessage("game:yourmove()");

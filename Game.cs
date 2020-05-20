@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Numerics;
+using Battleships.Net;
+using Battleships.Gamefield;
 
-namespace SchiffeFicken
+namespace Battleships
 {
     class Game
     {

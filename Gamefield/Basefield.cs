@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SchiffeFicken
+namespace Battleships.Gamefield
 {
     class Basefield
     {
