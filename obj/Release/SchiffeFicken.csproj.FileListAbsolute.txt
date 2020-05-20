@@ -1,7 +1,0 @@
-D:\3. Programmieren\Source\SchiffeFicken_markus\bin\Release\SchiffeFicken.exe.config
-D:\3. Programmieren\Source\SchiffeFicken_markus\bin\Release\SchiffeFicken.exe
-D:\3. Programmieren\Source\SchiffeFicken_markus\bin\Release\SchiffeFicken.pdb
-D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Release\SchiffeFicken.csproj.CoreCompileInputs.cache
-D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Release\SchiffeFicken.exe
-D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Release\SchiffeFicken.pdb
-D:\3. Programmieren\Source\SchiffeFicken_markus\obj\Release\SchiffeFicken.csprojResolveAssemblyReference.cache
